@@ -2,11 +2,11 @@ const express = require ('express');
 const path = require('path');
 const port =8000;
 const app = express();
-app.set('veiw engine','ejs');
+app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 app.get('/',function(req,res){
     console.log(req);
-    return res.render('index.ejs');
+    return res.render('index',{title:'My Contacts'})
     
 });
 app.get('/profile',function(req,res){
