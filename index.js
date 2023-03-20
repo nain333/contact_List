@@ -33,6 +33,9 @@ app.get('/profile',function(req,res){
 app.get('/playground',function(req,res){
     return res.render('playground',{title:'Playground'});
 })
+app.post('/create-contact',function(req,res){
+    return res.redirect('/playground');
+})
 
 
 
