@@ -1,7 +1,12 @@
 const express = require ('express');
+const fs = require('fs')
 const path = require('path');
 const port =8000;
 const app = express();
+
+app.use(express.urlencoded({extended: true}));
+app.use(express.json())
+
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
 var contactList=[{
@@ -34,7 +39,17 @@ app.get('/playground',function(req,res){
     return res.render('playground',{title:'Playground'});
 })
 app.post('/create-contact',function(req,res){
-    return res.redirect('/playground');
+    contactList.push(
+        {
+            name:req.body.name,
+            phone:req.body.phone
+            
+        }
+    )
+
+     return res.redirect('/');
+    
+     
 })
 
 
@@ -49,6 +64,6 @@ app.listen(port,function(err){
          return ;
     }
     console.log("Yup! My server is up and running on port", port);
-
+    return;
 
 })
