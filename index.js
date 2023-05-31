@@ -6,9 +6,22 @@ const app = express();
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json())
+app.use(express.static('assets'))
+// middleware:1:
+// app.use((req,res,next)=>{
+//     console.log('middle ware 1 is  called in here')
+//     next();
+// })
+// // middleware 2
+// app.use((req,res,next)=>{
+//     console.log('middleware2 is called.');
+//     next();
+// })
 
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views'));
+
+
 var contactList=[{
         name:'Himanshu',
         phone:1111111111,
@@ -47,7 +60,8 @@ app.post('/create-contact',function(req,res){
         }
     )
 
-     return res.redirect('/');
+     return res.redirect('back');
+
     
      
 })

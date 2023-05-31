@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="/css/home.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
 </head>
 <body>
-    <h1>Rendered from ejs!</h1>
-    <h1>Contact List</h1>
-    <div>
+    <h1 id="page-heading">
+        <i class="fas fa-address-book ">
+
+        </i>
+        My Contact List</h1>
+    <div class="container">
         <ul>
             <% for(let i of contact_List){%>
-                <li>
-                    <p>
+                <li class="vl">
+                    <p class="left_algn">
+                        
                         <%= i.name %>
+                    
                     </p>
-                    <p>
+                    
+                    <p class="right_algn">
+                        
                         <%= i.phone%>
-
+                        
                     </p>
                 </li>
 
@@ -28,8 +36,9 @@
     <form action="/create-contact" method="POST">
         <input type="text" placeholder="Enter your Name:" name="name" required>
         <input type="number" placeholder="Enter your phone Number: " name="phone" required>
-        <button type="submit"> Add Contact</button>
+        <button type="submit" class="contact-btn"> Add</button>
     </form>
-    
+    <script src="https://kit.fontawesome.com/d08ac5d23e.js" crossorigin="anonymous"></script>
+    <script src="/js/home.js"></script>
 </body>
 </html>
