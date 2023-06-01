@@ -14,30 +14,41 @@
         </i>
         My Contact List</h1>
     <div class="container">
-        <ul>
+        
+        <ul >
             <% for(let i of contact_List){%>
-                <li class="vl">
-                    <p class="left_algn">
+                <li class="vl contacts">
+                    <div class="details">
+                    <p class="left_algn name ">
                         
+                        <strong>
                         <%= i.name %>
-                    
+                            </strong>
                     </p>
                     
-                    <p class="right_algn">
+                    <p class="right_algn phone">
+                        <strong>
                         
                         <%= i.phone%>
-                        
+                        </strong>
                     </p>
+                    </div>
+                    <div class="delete-button">
+                        <a href="/delete-contact/?phone=<%= i.phone %>" rel="noopener noreferrer" >
+                            <i class="fa fa-window-close"></i>
+                        </a>
+                    </div>
                 </li>
 
             <%}%>
         </ul>
-    </div>
-    <form action="/create-contact" method="POST">
+    
+    <form class="new_form"action="/create-contact" method="POST">
         <input type="text" placeholder="Enter your Name:" name="name" required>
         <input type="number" placeholder="Enter your phone Number: " name="phone" required>
         <button type="submit" class="contact-btn"> Add</button>
     </form>
+    </div>
     <script src="https://kit.fontawesome.com/d08ac5d23e.js" crossorigin="anonymous"></script>
     <script src="/js/home.js"></script>
 </body>

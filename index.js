@@ -23,16 +23,8 @@ app.set('views',path.join(__dirname,'views'));
 
 
 var contactList=[{
-        name:'Himanshu',
-        phone:1111111111,
-    },
-    {
-        name:'Google',
-        phone:222222222,
-    },
-    {
-        name:'faceBook',
-        phone:3333333333
+        name:'Emergency',
+        phone:911
     }
 
 ]
@@ -64,6 +56,16 @@ app.post('/create-contact',function(req,res){
 
     
      
+})
+app.get('/delete-contact/',(req,res)=>{
+    console.log(req.query);
+    let phone =req.query.phone;
+    let contactIndex=contactList.findIndex(contact=>contact.phone==phone); 
+    if(contactIndex!=-1){
+        contactList.splice(contactIndex,1); 
+    }
+    return res.redirect('back');
+
 })
 
 
