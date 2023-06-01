@@ -2,6 +2,9 @@ const express = require ('express');
 const fs = require('fs')
 const path = require('path');
 const port =8000;
+const db = require('./config/mongoose')
+const contact = require('./models/contact');
+const Contact = require('./models/contact');
 const app = express();
 
 app.use(express.urlencoded({extended: true}));
@@ -10,7 +13,7 @@ app.use(express.static('assets'))
 // middleware:1:
 // app.use((req,res,next)=>{
 //     console.log('middle ware 1 is  called in here')
-//     next();
+//     next(); 
 // })
 // // middleware 2
 // app.use((req,res,next)=>{
@@ -44,19 +47,29 @@ app.get('/playground',function(req,res){
     return res.render('playground',{title:'Playground'});
 })
 app.post('/create-contact',function(req,res){
-    contactList.push(
-        {
-            name:req.body.name,
-            phone:req.body.phone
+//     contactList.push(
+//         {
+//             name:req.body.name,
+//             phone:req.body.phone
             
-        }
-    )
+//         }
+//     )
 
-     return res.redirect('back');
+//      return res.redirect('back');
 
     
      
+// })
+// database creation of contacts
+Contact.create({
+    name: req.body.name,
+    phone:req.body.phone
+}).then((contact)=>{console.log("The contact has been created successfuly",contact)}).catch((err)=>{
+    console.log("The contact creation encountered an error"); 
 })
+});
+
+
 app.get('/delete-contact/',(req,res)=>{
     console.log(req.query);
     let phone =req.query.phone;
