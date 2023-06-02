@@ -34,7 +34,7 @@
                     </p>
                     </div>
                     <div class="delete-button">
-                        <a href="/delete-contact/?phone=<%= i.phone %>" rel="noopener noreferrer" >
+                        <a href="/delete-contact/?id=<%= i._id %>" rel="noopener noreferrer" >
                             <i class="fa fa-window-close"></i>
                         </a>
                     </div>
@@ -43,7 +43,7 @@
             <%}%>
         </ul>
     
-    <form class="new_form"action="/create-contact" method="POST">
+    <form class="new_form" action="/create-contact" method="POST">
         <input type="text" placeholder="Enter your Name:" name="name" required>
         <input type="number" placeholder="Enter your phone Number: " name="phone" required>
         <button type="submit" class="contact-btn"> Add</button>
